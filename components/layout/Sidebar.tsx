@@ -11,7 +11,7 @@ const menu = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 bg-white border-r">
+    <aside className="w-64 bg-[var(--color-bg)] border-r"> {/* style={{ backgroundColor: "var(--color-bg)" }} */}
       <div className="p-6 font-bold text-xl">My Task</div>
 
       <nav className="space-y-2 px-4">

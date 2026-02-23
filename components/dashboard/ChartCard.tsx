@@ -13,12 +13,12 @@ export default function ChartCard({ value }: ProgressCardProps) {
 
   return (
     <Card className="h-54">
-      <h3 className="pl-2 font-semibold text-gray-700">Today Progress</h3>
+      <h3 className="pl-2 font-semibold ">Today Progress</h3>
 
       <div className="relative flex items-center justify-center">
         <svg height={radius * 2} width={radius * 2}>
           <circle
-            stroke="#e5e7eb"
+            stroke="#e5e7eb" 
             fill="transparent"
             strokeWidth={stroke}
             r={normalizedRadius}
@@ -26,7 +26,7 @@ export default function ChartCard({ value }: ProgressCardProps) {
             cy={radius}
           />
           <circle
-            stroke="#22c55e"
+            stroke="var(--color-progress)"
             fill="transparent"
             strokeWidth={stroke}
             strokeDasharray={`${circumference} ${circumference}`}
@@ -39,7 +39,7 @@ export default function ChartCard({ value }: ProgressCardProps) {
           />
         </svg>
 
-        <span className="absolute text-2xl font-bold text-gray-800">
+        <span className="absolute text-2xl font-bold">
           {value}%
         </span>
       </div>

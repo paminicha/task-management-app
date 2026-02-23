@@ -10,7 +10,7 @@ function WeeklyCard() {
     <Card className="h-100 flex flex-col">
         <div className="flex justify-between p-2">
             <h3 className="font-semibold">Weekly Tasks</h3>
-            <button className="w-8 h-8 rounded-full bg-slate-200">+</button>
+            <button className="w-8 h-8 rounded-full btn-primary">+</button>
         </div>
 
         {/* List */}

@@ -1,28 +1,47 @@
 @import "tailwindcss";
 
+:root {
+  --color-bg: #f9fafb;
+  --color-text: #364153;
+  --color-primary: #5697ff;
+  --color-text-nav: #111827;
+  --color-progress: #21c74b; /* ← ต้องอยู่นอก media */
+  --color-border: #b8b8b8;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
-  --bg: bg-gray-50;
-  --text: #111827;
-  --primary: #3b82f6;
+  --color-bg: #f9fafb;
+  --color-text: #111827;
+  --color-primary: #5697ff; /* blue default */
   --foreground: #242424;
+  --color-text-nav: #111827 ;
+  --color-progress: #21c74b ;
   }
 }
 
-/* @theme {
+/* @theme { //ใช้ไม่ได้
   dark-mode: class;
 } */
+ /* เปิด dark mode แบบ class strategy */
+@custom-variant dark (&:where(.dark, .dark *));
 
 .dark {
-  --bg: #0f172a;
-  --text: #e5e7eb;
+  --color-bg: #242424;
+  --color-text: #e5e7eb;
 }
 
+.default {
+  --color-primary: #5697ff;
+}
 
 body {
-  background: var(--bg);
-  color: var(--foreground);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.btn-primary {
+  background-color: var(--color-primary);
+}
 

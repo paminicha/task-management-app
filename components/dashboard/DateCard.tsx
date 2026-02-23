@@ -15,14 +15,14 @@ export default function DateCard({ date } : {date: Date}) {
 
   return (
     <Card className="pl-5">
-        <p className="text-gray-500 text-sm">Date</p>
+        <p className="text-sm">Date</p>
         <div className="pl-4 flex items-center gap-4">
             <div className="text-center leading-none">
                 <p className="text-4xl ">{day}</p>
             </div>
             <div>
                 <p className="text-lg font-semibold">{monthYear}</p>
-                <p className="text-sm text-gray-500">{time} TH</p>
+                <p className="text-sm">{time} TH</p>
             </div>
         </div>
     </Card>

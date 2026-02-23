@@ -14,7 +14,7 @@ function GoalRoutineCard() {
                 <GoalItem title='Read a book >20 mins' goal_note='Daily'/>
                 <GoalItem title='Sleep 22.00' goal_note='Daily'/>
             </div>
-            <button className="w-8 h-8 m-1 shrink-0 rounded-full bg-slate-200">+</button>
+            <button className="w-8 h-8 m-1 shrink-0 rounded-full btn-primary">+</button>
         </div>
     </Card>
   )

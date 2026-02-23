@@ -59,7 +59,7 @@ function TaskDetail({ task , update, deleteTask } :Props) {
           >
             Edited
           </button>
-          <button className="px-3 py-1.5 rounded-lg bg-blue-400 text-white hover:bg-red-500"
+          <button className="px-3 py-1.5 rounded-lg bg-red-400 text-white hover:bg-red-500"
             onClick={() => deleteTask(task.id)} >
             Delete
           </button>

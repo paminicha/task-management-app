@@ -8,7 +8,7 @@ type TaskItemProps = Task & {
 }
 
 
-function TaskItem({id, title, description,note, time, startDate, endDate, progress, priority, category, isActive, onClick}: TaskItemProps) {
+function TaskItem({id, title, description,note, startTime, endTime, startDate, endDate, progress, priority, category, isActive, onClick}: TaskItemProps) {
   return (
         <div onClick={onClick} 
             className={`rounded-xl shadow p-2 mx-2 cursor-pointer transition border
@@ -29,7 +29,7 @@ function TaskItem({id, title, description,note, time, startDate, endDate, progre
                 </div>
 
                 <div className="text-right text-sm text-gray-500">
-                    <div className="font-medium">{time}</div>
+                    <div className="font-medium">{startTime}</div>
                     <div>{startDate===endDate ? endDate : `${startDate} - ${endDate}`}</div>
                 </div>
             </div>

@@ -6,7 +6,10 @@ type CardProps = {
 
 export function Button({ children, className = "" , onClick}: CardProps) {
   return (
-    <button className={`bg-slate-500 text-white px-4 py-2 rounded-lg hover:opacity-90 ${className}`} onClick={onClick}>
+    <button className={`btn-primary text-white px-4 py-2 rounded-lg hover:opacity-90 ${className}`} 
+      // style={{ backgroundColor: "var(--color-primary)" }}
+      onClick={onClick}
+    >
         {children}
     </button>
   )
