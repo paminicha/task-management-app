@@ -30,9 +30,11 @@ export default function TaskPage() {
   } = useTasks()
 
   const [isAddOpen, setIsAddOpen] = useState(false)
+  // console.log(typeof window)
 
   return (
     <div>
+      
       <DashboardHeader title="Tasks" setSearch={setSearch} search={search} setStatus={setStatus} setCategory={setCategory}
         setPriority={setPriority} setStartDate={setStartDate} setEndDate={setEndDate} setSort={setSort} />
 

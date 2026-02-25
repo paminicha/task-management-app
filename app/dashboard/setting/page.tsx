@@ -11,9 +11,24 @@ const colors = [
 ] as ThemeColor[]
 
 export default function SettingPage() {
-  const [theme, setTheme] = useState<"light"|"dark">("light")
-  const [color, setColor] = useState<ThemeColor>("Default")
-  const [customColor, setCustomColor] = useState("#3b82f6")
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+  if (typeof window !== "undefined") {
+      return (localStorage.getItem("theme") as "light" | "dark") || "light"
+    }
+    return "light"
+  })
+  const [color, setColor] = useState<ThemeColor>(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("color") as ThemeColor) || "Default"
+    }
+    return "Default"
+  })
+  const [customColor, setCustomColor] = useState(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("customColor") as ThemeColor) || "#3b82f6"
+    }
+    return "#3b82f6"
+  })
 
   const setPrimaryColor = (color: ThemeColor) => {
     const root = document.documentElement
@@ -33,6 +48,7 @@ export default function SettingPage() {
       root.style.setProperty("--color-text-nav", "#ffffff")
     } else {
       root.style.setProperty("--color-text-nav", "var(--color-text-nav)")
+      // root.style.removeProperty("--color-text-nav")
     }
   }
 
@@ -48,16 +64,9 @@ export default function SettingPage() {
 
     localStorage.setItem("theme", theme)
     localStorage.setItem("color", color)
+    localStorage.setItem("customColor", customColor)
 
   }, [theme, color, customColor])
-
-  useEffect(() => {
-    const saveTheme = localStorage.getItem("theme") as "light" | "dark" | null
-    const savedColor = localStorage.getItem("color") as ThemeColor | null
-
-    if (saveTheme) {setTheme(saveTheme)}
-    if (savedColor) {setColor(savedColor)}
-    }, [])
 
   return (
     <div className="p-4 space-y-6">
