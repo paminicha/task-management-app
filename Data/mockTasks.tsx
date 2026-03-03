@@ -1,4 +1,7 @@
 import { Task } from "./task"
+const today = new Date()
+const tomorrow = new Date(today)
+tomorrow.setDate(today.getDate() + 1)
 
 export const mockTasks: Task[] = [
   {
@@ -8,8 +11,8 @@ export const mockTasks: Task[] = [
     status: "Doing",
     priority: "high",
     progress: 80,
-    startDate: "2026-01-30",
-    endDate: "2026-01-30",
+    startDate: today.toISOString().split('T')[0],
+    endDate: tomorrow.toISOString().split('T')[0],
     startTime: "08:00",
     endTime: "09:00",
     category: "Work",

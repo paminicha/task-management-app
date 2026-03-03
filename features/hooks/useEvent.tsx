@@ -4,15 +4,17 @@ import { Event } from "@/Data/event"
 // import { mockEvents } from "@/Data/mockEvents"
 import { fetchEvent, createEvent, updateEvent, deleteEvent } from "../service/event.service"
 import { error } from "console"
+import { filterDateRange, sortData } from "./datesortFilter"
 
 const STORAGE_KEY = "events"
 
 export function useEvent() {
-    const [search, setSearch] = useState("")
     const [events, setEvents] = useState<Event[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
     const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
+
+    const [search, setSearch] = useState("")
     const [searchStartDate, setSearchStartDate] = useState("")
     const [searchEndDate, setSearchEndDate] = useState("")
     const [sort, setSort] = useState<"az" | "newest">("az")
@@ -46,25 +48,20 @@ export function useEvent() {
         Load()
     }, [])
 
-    const filteredEvents = useMemo(() => {
-        return events.filter(e => {
-            const matchSearch = e.title.toLowerCase().includes(search.toLowerCase())
-            const matchDate = (searchStartDate ? e.start >= searchStartDate : true) &&
-                              (searchEndDate ? e.end <= searchEndDate : true)
-            return matchSearch && matchDate
-        })
-    },
-    [events, search, searchStartDate, searchEndDate])
+    // const filteredEvents = useMemo(() => {
+    //     return events.filter(e => {
+    //         const matchSearch = e.title.toLowerCase().includes(search.toLowerCase())
+    //         const matchDate =
+    //             (!searchStartDate || new Date(e.start) >= new Date(searchStartDate)) &&
+    //             (!searchEndDate || new Date(e.end) <= new Date(searchEndDate))
+    //         return matchSearch && matchDate
+    //     })
+    // },
+    // [events, search, searchStartDate, searchEndDate])
 
-    const sortedEvents = useMemo(() => {
-        return [...filteredEvents].sort((a, b) => {
-            if (sort === "az") {
-                return a.title.localeCompare(b.title)
-            } else {
-                return new Date(b.start).getTime() - new Date(a.start).getTime()
-            }
-        })
-    }, [filteredEvents, sort])
+    // const sortedEvents = useMemo(() => {
+    //     return sortData(events, sort, event => event.title, event => event.start)
+    // }, [filteredEvents, sort])
 
     // Add
     const addEvent = async (event: Event) => {
@@ -107,23 +104,26 @@ export function useEvent() {
 
     // Today's Events
     const todayEvents = useMemo(() => {
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
 
-    return events.filter(e => {
-        const start = new Date(e.start)
-        const end = new Date(e.end)
+        return events.filter(e => {
+            const start = new Date(e.start)
+            const end = new Date(e.end)
 
-        start.setHours(0, 0, 0, 0)
-        end.setHours(23, 59, 59, 999)
+            start.setHours(0, 0, 0, 0)
+            end.setHours(23, 59, 59, 999)
 
-        return start <= today && end >= today
-    })
+            return start <= today && end >= today
+        })
     }, [events])
 
     return {
-        events: sortedEvents,
+        events,
         todayEvents,
+        loading,
+        error,
+
         selectedEvent,
         setSelectedEvent,
 
@@ -131,10 +131,10 @@ export function useEvent() {
         updateEvent: updateEventhandler,
         deleteEvent: deleteEventHandler,
 
-        setSearch,
-        setSearchStartDate,
-        setSearchEndDate,
-        setSort,
+        search, setSearch,
+        searchStartDate, setSearchStartDate,
+        searchEndDate, setSearchEndDate,
+        sort, setSort,
         
     }
 }

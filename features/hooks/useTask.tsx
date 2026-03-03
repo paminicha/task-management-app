@@ -3,6 +3,7 @@ import { useState, useMemo, useEffect } from "react"
 import { Task } from "@/Data/task"
 import { fetchTasks, createTask, updateTask, deleteTask } from "../service/task.service"
 import { TaskStatus } from "@/Data/task"
+import { filterDateRange, sortData } from "./datesortFilter"
 
 export function useTasks() {
   // const [tasks, setTasks] = useState<Task[]>(mockTasks)
@@ -46,43 +47,35 @@ export function useTasks() {
     load()
   }, [])
 
-  const filteredTasks = useMemo(() => { //คำนวณค่าใหม่ “เฉพาะตอน dependency เปลี่ยน”
-    return tasks.filter(task => {
-      const matchSearch = task.title
-        .toLowerCase()
-        .includes(search.toLowerCase())
+  // const filteredTasks = useMemo(() => { //คำนวณค่าใหม่ “เฉพาะตอน dependency เปลี่ยน”
+  //   let data = [...tasks]
+  //   data = tasks.filter(task => {
+  //     const matchSearch = task.title
+  //       .toLowerCase()
+  //       .includes(search.toLowerCase())
 
-      const matchStatus =
-        status === "All" ? true : task.status === status
-      const matchCategory =
-        category === "All Task Category" ? true : task.category === category
-      const matchPriority =
-        priority === "all" ? true : task.priority === priority 
-      const matchDate =
-        (!startDate || new Date(task.startDate) >= new Date(startDate)) &&
-        (!endDate || new Date(task.endDate) <= new Date(endDate))
+  //     const matchStatus =
+  //       status === "All" ? true : task.status === status
+  //     const matchCategory =
+  //       category === "All Task Category" ? true : task.category === category
+  //     const matchPriority =
+  //       priority === "all" ? true : task.priority === priority
+  //     return matchSearch && matchStatus && matchCategory && matchPriority //ต้องผ่านทุกเงื่อนไขพร้อมกัน
+  //   })
+  //   // date filter
+  //   data = filterDateRange(
+  //     data, startDate, endDate, 
+  //     t => t.startDate,
+  //     t => t.endDate
+  //   )
+  //   return data
+  // }, [tasks, search, status, category, priority, startDate, endDate]) // dependency 
 
-      return matchSearch && matchStatus && matchCategory && matchPriority && matchDate //ต้องผ่านทุกเงื่อนไขพร้อมกัน
-    })
-  }, [tasks, search, status, category, priority, startDate, endDate]) // dependency 
-
-  const sortedTasks = useMemo(() => {
-    const data = [...filteredTasks]
-
-    if (sort === "az") {
-      data.sort((a, b) => a.title.localeCompare(b.title))
-    }
-
-    if (sort === "newest") {
-      data.sort(
-        (a, b) =>
-          new Date(b.startDate).getTime() -
-          new Date(a.startDate).getTime()
-      )
-    }
-
-    return data
-  }, [filteredTasks, sort])
+  // const sortedTasks = useMemo(() => {
+  //   return sortData(
+  //     filteredTasks, sort, filteredTask => filteredTask.title, filteredTask => filteredTask.startDate
+  //   )
+  // }, [filteredTasks, sort])
 
 
   const addTask = async (task: Task) => {
@@ -144,7 +137,7 @@ export function useTasks() {
   }
 
   return {
-    tasks: sortedTasks,
+    tasks,
     rawTasks: tasks,
     loading, 
     error, 

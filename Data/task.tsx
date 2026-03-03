@@ -1,6 +1,18 @@
-export type TaskStatus = "Todo" | "Doing" | "Done"
+export type TaskStatus = "All" | "Todo" | "Doing" | "Done"
 
-export type TaskPriority = "low" | "medium" | "high"
+export type TaskPriority = "all" | "low" | "medium" | "high"
+
+export type SortOption = "title-asc" | "title-desc" | "date-asc" | "date-desc"
+
+export interface DashboardFilter {
+  search: string
+  status: TaskStatus
+  category: string
+  priority: TaskPriority
+  startDate?: string | null
+  endDate?: string | null
+  sort: SortOption
+}
 
 export type Task = {
   id: string
@@ -15,6 +27,13 @@ export type Task = {
   endTime: string
   note?: string
   category: string
+}
+
+export type Event = {
+  id: string
+  title: string
+  start: string  // ISO datetime
+  end: string
 }
 
 export type Category_Color = {

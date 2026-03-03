@@ -1,6 +1,6 @@
 "use client"
 
-import DashboardHeader from "@/components/dashboard/DashboardHeader"
+import DashboardHeader from "@/components/ui/DashboardHeader"
 import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
 import TaskDetail from "@/components/task/TaskDetail"
