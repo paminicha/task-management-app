@@ -36,6 +36,13 @@ export type Event = {
   end: string
 }
 
+export type Goal = {
+  id: string
+  title: string
+  type: string
+  status: string
+}
+
 export type Category_Color = {
   category: string
   color: string

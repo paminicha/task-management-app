@@ -17,7 +17,7 @@ export default function DashboardHeader({title, setSearch, search, setStatus,
   setCategory, setPriority, setStartDate, setEndDate, setSort}: Props) {
 
   return (
-    <div className="p-3">
+    <div >
       <h1 className="text-2xl font-bold p-3">{title}</h1>
 
       {/* Search + Filter */}

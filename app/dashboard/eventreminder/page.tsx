@@ -3,8 +3,8 @@
 import DashboardHeader from "@/components/ui/DashboardHeader"
 import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
-import EventItem_date from "@/components/reminder/EventItem_date"
-import AddEventModal from "@/components/reminder/AddEventModal"
+import EventItem_date from "@/components/event/EventItem_date"
+import AddEventModal from "@/components/event/AddEventModal"
 import { useState, useMemo } from "react"
 import { useEvent } from "@/features/hooks/useEvent"
 import { useDashboardFilter } from "@/features/hooks/useDashboardFilter"
@@ -25,10 +25,10 @@ export default function eventPage() {
   // console.log(typeof window)
 
   return (
-    <div>
+    <div className="p-6 space-y-4">
       
       <DashboardHeader
-              title="Overview"
+              title="Events"
               search={filter.search}
               setSearch={filter.setSearch}
               setStatus={filter.setStatus}
@@ -38,7 +38,6 @@ export default function eventPage() {
               setEndDate={filter.setEndDate}
               setSort={filter.setSort}
             />
-        <h1>Events</h1>
 
       <div className="px-3">
         <Button onClick={() => setIsAddOpen(true)} className="cursor-pointer">
@@ -46,7 +45,7 @@ export default function eventPage() {
         </Button>
       </div>
 
-      <Card className="m-3 p-4 h-[75vh]">
+      <Card className="p-4 h-[75vh]">
         <div className="flex h-full gap-4">
 
           {/* Event List */}

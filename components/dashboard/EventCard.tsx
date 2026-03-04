@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card } from "../ui/Card"
-import EventItem from './EventItem'
+import EventItem from '../event/EventItem'
 import { Event } from '@/Data/event'
 
 interface EventCardProps {

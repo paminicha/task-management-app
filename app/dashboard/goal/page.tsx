@@ -5,108 +5,143 @@ import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
 import TaskDetail from "@/components/task/TaskDetail"
 import TaskItem from "@/components/task/TaskItem"
-import AddTaskModal from "@/components/task/AddTaskModal"
-import { useTasks } from "@/features/hooks/useTask"
+import AddGoalModal from "@/components/goal/AddGoalModal"
+import AddGoalDailyModal from "@/components/goal/AddGoalDailyModal"
+import EditGoalModal from "@/components/goal/EditGoalModal"
+import { useGoal } from "@/features/hooks/useGoal"
 import { useState } from "react"
+import GoalItemDetial from "@/components/goal/GoalItemDetail"
 
 export default function TaskPage() {
 
-  const {
-    tasks,
-    selectedTask,
-    setSelectedTask,
-    search,
-    setSearch,
-    setStatus, 
-    addTask,
-    updateTask,
-    deleteTask,
-    setCategory,
-    setPriority,
-    setStartDate,
-    setEndDate,
-    setSort,
-  } = useTasks()
+  const goal = useGoal()
 
   const [isAddOpen, setIsAddOpen] = useState(false)
+  const [isAddOpenDaily, setIsAddOpenDaily] = useState(false)
+  const [isEditOpen, setIsEditOpen] = useState(false)
   // console.log(typeof window)
 
   return (
-    <div>
+    <div className="p-6 space-y-4">
       
-      <DashboardHeader title="Tasks" 
-        setSearch={setSearch} search={search} setStatus={setStatus} setCategory={setCategory}
-        setPriority={setPriority} setStartDate={setStartDate} setEndDate={setEndDate} setSort={setSort} 
-        />
+      <h1 className="px-3 text-2xl font-bold">Goals</h1>
 
-      <div className="px-3">
+      <div className="px-3 inline-flex items-end">
+        <h1 className="px-3 text-lg font-bold">Big Goals</h1>
         <Button onClick={() => setIsAddOpen(true)} className="cursor-pointer">
-          + Add Task
+          + Add Big Goal
         </Button>
       </div>
 
-      <Card className="m-3 p-4 h-[75vh]">
+      <Card className="mb-6 h-[55vh]">
         <div className="flex h-full gap-4">
-
-          {/* Task List */}
-          <div
-            className={`
-              transition-all duration-300
-              ${selectedTask ? "hidden lg:block lg:w-[60%]" : "w-full lg:w-[60%]"}
-              overflow-y-auto space-y-3 pr-2
-            `}
-          >
-          
-            {tasks.map(task => (
-              <TaskItem
-                key={task.id}
-                task={task}
-                isActive={selectedTask?.id === task.id}
-                onClick={() => setSelectedTask(task)}
-                update={updateTask}
-              />
-            ))}
+          {/* Big Goal */}
+          <div className="transition-all duration-300 w-full lg:w-[50%] overflow-y-auto space-y-3 pr-2" >
+            <div className="flex flex-row flex-wrap gap-3">
+              {goal.goals
+                  .filter(g => g.type === "Big Goal" && g.status === "No")
+                  .map( g => (
+                    <GoalItemDetial key={g.id} goal={g} 
+                    onclickStatus={(status) => {goal.updateGoal(status)}} 
+                    onclickEdit={() => {
+                      goal.setSelectedGoal(g); setIsEditOpen(true)
+                    }}/>
+                  )
+                )}
+            </div>
           </div>
 
-          {/* Task Detail */}
-          <div
-            className={`
-              transition-all duration-300
-              ${selectedTask ? "w-full lg:w-[40%]" : "hidden lg:block lg:w-[40%]"}
-              overflow-y-auto
-            `}
-          >
-            {selectedTask ? (
-              <div className="h-full flex flex-col">
-                <button
-                  onClick={() => setSelectedTask(null)}
-                  className="lg:hidden mb-2 text-sm text-gray-500 text-left"
-                >
-                  ← Back
-                </button>
-
-                <TaskDetail task={selectedTask} update={updateTask} deleteTask={deleteTask}/>
-              </div>
-            ) : (
-              <div className="h-full flex items-center justify-center text-gray-400">
-                Select task to view detail
-              </div>
-            )}
+          {/* Status Success */}
+          <div className="transition-all duration-300 w-full lg:w-[50%] overflow-y-auto space-y-3 pr-2">
+            <div className="flex flex-row flex-wrap gap-3">
+              {goal.goals
+                .filter(g => g.type === "Big Goal" && g.status === "Yes")
+                .map( g => (
+                  <GoalItemDetial key={g.id} goal={g} 
+                    onclickStatus={(status) => {goal.updateGoal(status)}} 
+                    onclickEdit={() => {goal.setSelectedGoal(g); setIsEditOpen(true)}}/>
+                )
+              )}
+            </div>
           </div>
 
         </div>
       </Card>
+
+      {/* Daily Goal */}
+      <div className="px-3 inline-flex items-end">
+        <h1 className="px-3 text-lg font-bold">Daily Goals</h1>
+        <Button onClick={() => setIsAddOpenDaily(true)} className="cursor-pointer">
+          + Add Daily Goal
+        </Button>
+      </div>
+
+      <Card className="mb-6 h-[55vh]">
+        <div className="flex h-full gap-4">
+
+          {/* Daily Goal Undone */}
+          <div className="transition-all duration-300 w-full lg:w-[50%] overflow-y-auto space-y-3 pr-2" >
+            <div className="flex flex-row flex-wrap gap-3">
+              {goal.goals
+                  .filter(g => g.type === "Daily" && g.status === "No")
+                  .map( g => (
+                    <GoalItemDetial key={g.id} goal={g} 
+                    onclickStatus={(status) => {goal.updateGoal(status)}} 
+                    onclickEdit={() => {
+                      goal.setSelectedGoal(g); setIsEditOpen(true)
+                    }}/>
+                  )
+                )}
+            </div>
+          </div>
+
+          {/* Success */}
+          <div className="transition-all duration-300 w-full lg:w-[50%] overflow-y-auto space-y-3 pr-2">
+            <div className="flex flex-row flex-wrap gap-3">
+              {goal.goals
+                .filter(g => g.type === "Daily" && g.status === "Yes")
+                .map( g => (
+                  <GoalItemDetial key={g.id} goal={g} 
+                    onclickStatus={(status) => {goal.updateGoal(status)}} 
+                    onclickEdit={() => {goal.setSelectedGoal(g); setIsEditOpen(true)}}/>
+                )
+              )}
+            </div>
+          </div>
+
+        </div>
+      </Card>
+
       {isAddOpen && (
-        <AddTaskModal
-          onClose={() => setIsAddOpen(false)}
-          onSave={(newTask) => {
-            addTask(newTask)
+        <AddGoalModal 
+          onClose={() => {setIsAddOpen(false)}}
+          onSave={(newGoal) => {
+            goal.addGoal(newGoal)
             setIsAddOpen(false)
           }}
         />
+        
       )}
-
-
+      {isAddOpenDaily && (
+        <AddGoalDailyModal 
+          onClose={() => {setIsAddOpenDaily(false)}}
+          onSave={(newGoal) => {
+            goal.addGoal(newGoal)
+            setIsAddOpenDaily(false)
+          }}
+        />
+      )}
+      {isEditOpen && goal.selectedGoal && 
+        <EditGoalModal 
+          goal = {goal.selectedGoal}
+          onClose={() => setIsEditOpen(false)}
+          onSave={ (updated) => {
+            goal.updateGoal(updated)
+            setIsEditOpen(false)
+          }}
+          deleteGoal={(id) => goal.deleteGoal(id)}
+        />
+      }
     </div>
   )
 }

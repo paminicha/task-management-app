@@ -30,7 +30,7 @@ export default function TaskPage() {
   // console.log(typeof window)
 
   return (
-    <div>
+    <div className="p-6 space-y-4">
       <DashboardHeader
               title="Tasks"
               search={filter.search}
@@ -49,7 +49,7 @@ export default function TaskPage() {
         </Button>
       </div>
 
-      <Card className="m-3 p-4 h-[75vh]">
+      <Card className="p-4 h-[75vh]">
         <div className="flex h-full gap-4">
 
           {/* Task List */}
@@ -109,9 +109,6 @@ export default function TaskPage() {
           }}
         />
       )}
-      <Card className="m-3 p-4 h-[75vh]">
-          <div className="flex h-full gap-4"></div>
-      </Card>
 
     </div>
   )

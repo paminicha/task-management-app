@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Event } from '@/Data/event'
 import { Pencil } from "lucide-react"
-import EditEventModal from '../reminder/EditEventModal'
+import EditEventModal from './EditEventModal'
 
 interface EventItemProps {
   event: Event,
