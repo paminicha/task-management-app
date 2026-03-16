@@ -21,7 +21,7 @@ function GoalRoutineCard({goalActions}: Props) {
       <Card>
         <h3 className="text-lg font-semibold text-gray-700 pl-2">Goal Routine</h3>
         <div className="flex items-center justify-between mb-4">
-            <div className="flex overflow-x-auto whitespace-nowrap scrollbar-hide space-x-3 pr-2">
+            <div className="flex overflow-x-auto space-x-3 pr-2">
               {goalActions.todayGoals
                 .filter(g => g.type === "Daily")
                 .map( g => (

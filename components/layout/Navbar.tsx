@@ -8,9 +8,10 @@ export default function Navbar() {
     >
       <Link href="/" className="font-semibold hover:text-yellow-400">Home</Link>
 
-      <Link href="/dashboard" className="hover:text-yellow-400">My App</Link>
-      <Link href="/profile" className="hover:text-yellow-400">Profile</Link>
-      <Link href="/projects" className="hover:text-yellow-400">Projects</Link>
+      {/* <Link href="/dashboard" className="hover:text-yellow-400">My App</Link> */}
+      {/* <Link href="/profile" className="hover:text-yellow-400">Profile</Link>
+      <Link href="/projects" className="hover:text-yellow-400">Projects</Link> */}
+      <Link href="/about" className="hover:text-yellow-400">About</Link>
       <Link href="/contact" className="hover:text-yellow-400">contact</Link>
       
     </nav>

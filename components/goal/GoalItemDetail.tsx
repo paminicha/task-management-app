@@ -24,12 +24,17 @@ function GoalItemDetial({goal, onclickStatus, onclickEdit}: Props) {
   return (
     <div className="w-32 shrink-0 bg-gray-50 p-2 rounded-xl shadow-sm flex flex-col">
       <div>
-        <h4 className="font-semibold text-gray-600 text-wrap"> {goal.title} </h4>
+        {/* <h4 className="font-semibold text-gray-600 text-wrap"> {goal.title} </h4> */}
+        <h4
+        className="font-semibold text-gray-600 w-full break-words overflow-hidden
+                  [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]"
+          >
+            {goal.title}
+          </h4>
         <p className="mt-1 text-xs text-gray-400"> {goal.type} </p>
       </div>
 
       <div className="mt-auto flex justify-end gap-1">
-        {/* <input type="checkbox" className="h-5 w-5 rounded border-gray-300 text-black focus:ring-0" /> */}
         <button
           className="cursor-pointer w-7 h-7 flex items-center justify-center 
                     bg-gray-300 hover:bg-amber-400
@@ -52,16 +57,6 @@ function GoalItemDetial({goal, onclickStatus, onclickEdit}: Props) {
               <Check size={14} />
           </button>
       </div>
-      {/* {isOpen && ( 
-        <EditGoalModal 
-          goal={goalActions.selectedGoal}
-          onClose={() => setIsOpen(false)}
-          onSave={ (updated) => {
-            goalActions.updateGoal(updated)
-            setIsOpen(false)
-          }}
-        />
-            )} */}
     </div>
   )
 }

@@ -3,8 +3,6 @@
 import DashboardHeader from "@/components/ui/DashboardHeader"
 import { Button } from "@/components/ui/Button"
 import { Card } from "@/components/ui/Card"
-import TaskDetail from "@/components/task/TaskDetail"
-import TaskItem from "@/components/task/TaskItem"
 import AddGoalModal from "@/components/goal/AddGoalModal"
 import AddGoalDailyModal from "@/components/goal/AddGoalDailyModal"
 import EditGoalModal from "@/components/goal/EditGoalModal"
