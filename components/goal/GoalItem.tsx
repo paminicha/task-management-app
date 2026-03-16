@@ -11,13 +11,9 @@ function GoalItem({goal, onclick}: Props) {
   return (
     <div className="w-32 shrink-0 bg-gray-50 p-2 rounded-xl border-gray-300 border-1 shadow-sm flex flex-col">
       <div>
-        {/* <h4 className="font-semibold text-gray-600 text-wrap"> {goal.title} </h4> */}
-        <h4
-        className="font-semibold text-gray-600 w-full break-words overflow-hidden
-                  [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]"
-          >
-            {goal.title}
-          </h4>
+        {/* <h4 className="font-semibold text-gray-600 text-wrap"> {goal.title} </h4> 
+        className="font-semibold text-gray-600 w-full break-words overflow-hidden display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]"*/}
+        <h4 className="font-semibold text-gray-600 line-clamp-2" > {goal.title} </h4>
         <p className="mt-1 text-xs text-gray-400"> {goal.type} </p>
       </div>
 
