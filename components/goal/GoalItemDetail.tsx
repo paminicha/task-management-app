@@ -24,13 +24,7 @@ function GoalItemDetial({goal, onclickStatus, onclickEdit}: Props) {
   return (
     <div className="w-32 shrink-0 bg-gray-50 p-2 rounded-xl shadow-sm flex flex-col">
       <div>
-        {/* <h4 className="font-semibold text-gray-600 text-wrap"> {goal.title} </h4> */}
-        <h4
-        className="font-semibold text-gray-600 w-full break-words overflow-hidden
-                  [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]"
-          >
-            {goal.title}
-          </h4>
+        <h4 className="font-semibold text-gray-600 text-wrap"> {goal.title} </h4>
         <p className="mt-1 text-xs text-gray-400"> {goal.type} </p>
       </div>
 
