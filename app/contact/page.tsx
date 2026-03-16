@@ -8,23 +8,23 @@ export default function ContactPage() {
         <h1 className="text-3xl font-bold">Contact</h1>
       </div>
 
-      <div className="bg-white shadow-md rounded-xl p-8 space-y-6">
+      <div className="shadow-md rounded-xl p-8 space-y-6 border-gray-400/30 border">
 
         {/* Email */}
         <div className="flex items-center gap-4">
           <Mail className="text-blue-600" />
-          <p className="text-gray-700">pamnichapatr@gmail.com</p>
+          <p >pamnichapatr@gmail.com</p>
         </div>
 
         {/* Phone */}
         <div className="flex items-center gap-4">
           <Phone className="text-green-600" />
-          <p className="text-gray-700">081-323-6464</p>
+          <p >081-323-6464</p>
         </div>
 
         <div className="flex items-center gap-4">
           <Phone className="text-green-600" />
-          <p className="text-gray-700">Bangkok/Nonthaburi</p>
+          <p >Bangkok/Nonthaburi</p>
         </div>
 
         {/* Social */}
@@ -33,16 +33,16 @@ export default function ContactPage() {
           <a
             href="https://github.com/paminicha"
             target="_blank"
-            className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-100 transition"
+            className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-300/50 transition"
           >
             <Github size={18} />
             GitHub
           </a>
 
           <a
-            href="www.linkedin.com/in/pamnichapatr-uth-286110279"
+            href="https://linkedin.com/in/pamnichapatr-uth-286110279"
             target="_blank"
-            className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-100 transition"
+            className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-300/50 transition"
           >
             <Linkedin size={18} />
             LinkedIn

@@ -23,10 +23,12 @@ export default function StatsSection({tasks} : StatsSectionProps ) {
           <StatCard title="Complete" value={`${done}/${total}`} />
           <StatCard title="In Progress" value={`${doing}/${total}`} />
           <StatCard title="Waiting" value={`${todo}/${total}`} />
+          
         </div>
 
         <div className="lg:col-span-3 grid">
-          <StatCard title="Mood Card" value="Good day" />
+          {/* <StatCard title="Mood Card" value="Good day" /> */}
+          <StatCard title="Today Total" value={`${total}`} />
         </div>
       </section>
   )

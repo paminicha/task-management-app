@@ -19,7 +19,7 @@ function GoalRoutineCard({goalActions}: Props) {
   return (
     <div>
       <Card>
-        <h3 className="text-lg font-semibold text-gray-700 pl-2">Goal Routine</h3>
+        <h3 className="text-lg font-semibold pl-2">Goal Routine</h3>
         <div className="flex items-center justify-between mb-4">
             <div className="flex overflow-x-auto space-x-3 pr-2">
               {goalActions.todayGoals

@@ -22,11 +22,11 @@ function TaskDetail({ task , update, deleteTask } :Props) {
   const [isEditOpen, setIsEditOpen] = useState(false)
 
   return (
-    <div className="h-full bg-gray-50 rounded-xl shadow-md p-4 flex flex-col">
+    <div className="h-full rounded-xl border-gray-300/50 border shadow-sm p-4 flex flex-col">
 
       <h2 className="text-2xl font-semibold mb-3">{task.title}</h2>
 
-      <div className="space-y-3 text-gray-600 text-sm flex-1 font-medium">
+      <div className="space-y-3 text-sm flex-1 font-medium">
         <div>
           <p>Duration: {task.startDate.replaceAll("-", "/")} - {task.endDate.replaceAll("-", "/")}</p>
           <p>Time: {task.startTime} - {task.endTime}</p>
@@ -38,12 +38,12 @@ function TaskDetail({ task , update, deleteTask } :Props) {
 
         <div>
           <p >Description:</p>
-          <p className="text-gray-500">{task.description || "-"}</p>
+          <p >{task.description || "-"}</p>
         </div>
 
         <div>
           <p >Notes:</p>
-          <p className="text-gray-500">{task.note}</p>
+          <p >{task.note}</p>
         </div>
       </div>
 

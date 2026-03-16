@@ -29,21 +29,21 @@ function EventItem({event, isActive, onClick, update}: EventItemProps) {
     <div>
       <div key={event.id} onClick={onClick}
         className={`rounded-xl shadow p-2 mx-2 cursor-pointer transition border
-                ${isActive ? "bg-blue-50 border-blue-500 ring-2 ring-blue-200"
-                  : isPast ? "bg-gray-50 border-gray-500 text-gray-300" 
-                    : "bg-gray-50 border-transparent hover:bg-slate-100"
+                ${isActive ? "bg-blue-50/10 border-blue-500 ring-2 ring-blue-200/10"
+                  : isPast ? "bg-gray-50/10 border-gray-500/10 text-gray-400" 
+                    : " border-gray-300 hover:bg-slate-100/5"
                 }
             `}>
           <button
                       className="cursor-pointer w-7 h-7 flex items-center justify-center 
-                                  bg-amber-300 hover:bg-amber-200 
+                                  bg-amber-300 hover:bg-amber-500 
                                   rounded-full transition"
                       onClick={() => setIsEditOpen(true)}
                       >
                           <Pencil size={14} />
                       </button>
-          <h3 className="font-semibold text-gray-800">{startDate} {startTimeOnly} - {endDate} {endTimeOnly}</h3>
-          <h3 className="font-semibold text-gray-800">{event.title}</h3>
+          <h3 className="font-semibold ">{startDate} {startTimeOnly} - {endDate} {endTimeOnly}</h3>
+          <h3 className="font-semibold ">{event.title}</h3>
           
       </div>
       {isEditOpen && (

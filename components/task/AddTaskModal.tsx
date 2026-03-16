@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Task } from "@/Data/task"
 import { TaskStatus } from "@/Data/task"
 import { TaskPriority } from "@/Data/task"
+import dayjs from "dayjs"
 
 type Props = {
   onClose: () => void
@@ -17,10 +18,10 @@ export default function AddTaskModal({ onClose, onSave }: Props) {
   const [progress, setProgress] = useState("0")
   const [category, setCategory] = useState("Work");
   const [note, setNote] = useState("");
-  const [startDate, setStartDate] = useState(new Date().setHours(0, 0, 0, 0).toString());
-  const [endDate, setEndDate] = useState(new Date().setHours(0, 0, 0, 0).toString());
+  const [startDate, setStartDate] = useState(dayjs().format("YYYY-MM-DD"));
+  const [endDate, setEndDate] = useState(dayjs().format("YYYY-MM-DD"));
   const [startTime, setStartTime] = useState("0.00");
-  const [endTime, setEndTime] = useState("0.00");
+  const [endTime, setEndTime] = useState("23.59");
 
   const numericProgress = Number(progress) || 0
 
@@ -36,17 +37,8 @@ export default function AddTaskModal({ onClose, onSave }: Props) {
   return (
     <div className="fixed inset-0 bg-black/40 z-50 flex justify-center items-start md:items-center overflow-y-auto">
 
-    <div className="
-      w-full 
-      h-screen md:h-auto
-      md:max-h-[90vh]
-      max-w-3xl 
-      bg-white 
-      rounded-none md:rounded-2xl 
-      shadow-xl 
-      p-6 
-      overflow-y-auto
-    ">
+    <div className="w-full h-screen md:h-auto md:max-h-[90vh] max-w-3xl 
+      rounded-none md:rounded-2xl bg-(--color-bg) shadow-xl p-6 overflow-y-auto ">
 
       <h2 className="text-xl font-semibold mb-6">Edit Task</h2>
 
@@ -199,7 +191,7 @@ export default function AddTaskModal({ onClose, onSave }: Props) {
             </button>
         
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
             onClick={() => {
               onSave({
                 id: crypto.randomUUID(),

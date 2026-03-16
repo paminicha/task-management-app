@@ -15,17 +15,8 @@ export default function AddGoalDailyModal({ onClose, onSave }: Props) {
   return (
     <div className="fixed inset-0 bg-black/40 z-50 flex justify-center items-start md:items-center overflow-y-auto">
 
-    <div className="
-      w-full 
-      h-screen md:h-auto
-      md:max-h-[90vh]
-      max-w-3xl 
-      bg-white 
-      rounded-none md:rounded-2xl 
-      shadow-xl 
-      p-6 
-      overflow-y-auto
-    ">
+    <div className="w-full h-screen md:h-auto md:max-h-[90vh] max-w-3xl 
+      rounded-none md:rounded-2xl bg-(--color-bg) shadow-xl p-6 overflow-y-auto ">
 
       <h2 className="text-xl font-semibold mb-6">Add Goal</h2>
 
@@ -67,7 +58,7 @@ export default function AddGoalDailyModal({ onClose, onSave }: Props) {
             </button>
         
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+            className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
             onClick={() => {
               onSave({
                 id: crypto.randomUUID(),

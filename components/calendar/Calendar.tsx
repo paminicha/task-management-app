@@ -15,11 +15,11 @@ type Props = {
 }
 
 const categoryColorMap: Record<string, string> = {
-  work: "bg-cyan-200",
-  family: "bg-green-200",
-  personal: "bg-purple-200",
-  friend: "bg-yellow-200",
-  reminder: "bg-red-200",
+  work: "bg-blue-400/90",
+  family: "bg-green-400/90",
+  personal: "bg-purple-400/90",
+  friend: "bg-yellow-400/90",
+  reminder: "bg-red-400/90",
 }
 
 
@@ -70,7 +70,8 @@ export default function Calendar( {} : Props) {
                       setSort={filter.setSort}
                     />
       <Card className="flex-1 m-3 p-4 flex gap-2">
-        <div >
+        <div className="w-full overflow-x-auto">
+          <div className="min-w-[700px]">
           {/* Header */}
           <div className="flex justify-between items-center mb-3">
             <div className="flex gap-2">
@@ -103,7 +104,7 @@ export default function Calendar( {} : Props) {
                   key={idx}
                   className={`min-h-[100px] border-r border-b p-1 relative
                     ${!isCurrentMonth ? "text-gray-400" : ""}
-                    ${isToday ? "bg-slate-200" : ""}
+                    ${isToday ? "btn-primary" : ""}
                   `}
                 >
                   <div className="text-sm font-semibold text-right">
@@ -128,10 +129,11 @@ export default function Calendar( {} : Props) {
                         key={t.id}
                         onClick={() => task.setSelectedTask(t)}
                         className={`text-xs rounded px-1 truncate cursor-pointer hover:opacity-80
-                          ${categoryColorMap[t.category.toLowerCase()] || "bg-gray-200"}
+                          ${categoryColorMap[t.category.toLowerCase()] || "bg-gray-500"}
                         `}
                       >
-                        {t.startTime} {t.title}
+                        {/* {t.startTime}  */}
+                        {t.title}
                         
                       </div>
                       
@@ -206,6 +208,7 @@ export default function Calendar( {} : Props) {
               </div>
             </div>
           )}
+          </div>
         </div>
       </Card>
     </div>
