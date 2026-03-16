@@ -17,10 +17,10 @@ export const db_task = {
   },
 
   update: (updated: Task) => {
-    console.log("UPDATED:", updated)
-    console.log("TASKS:", tasks)
+    // console.log("UPDATED:", updated)
+    // console.log("TASKS:", tasks)
     const index = tasks.findIndex(t => t.id === updated.id)
-    console.log("FOUND INDEX:", index)
+    // console.log("FOUND INDEX:", index)
     if (index === -1) throw new Error("Task not found")
 
     tasks[index] = updated

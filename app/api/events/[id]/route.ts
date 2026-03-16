@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server"
 import { db_event } from "@/Data/db_event"
 
-export async function PUT(req: Request) {
+
+export async function PUT(req: Request, { params }: { params: { id: string } }) {
   const body = await req.json()
-  return NextResponse.json(db_event.update(body))
+  return NextResponse.json(db_event.update(params.id, body))
 }
 
 export async function DELETE(
