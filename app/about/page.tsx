@@ -52,7 +52,7 @@ export default function About() {
 
           <div className="flex items-start gap-3">
             <PenLine className="text-blue-600 mt-1" />
-            <p>Create and edit tasks</p>
+            <p>Create, edit, and delete tasks</p>
           </div>
 
           <div className="flex items-start gap-3">
@@ -118,7 +118,7 @@ export default function About() {
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                     className="w-8 h-8"
                 />
-                <p className="text-sm font-medium">LocalStorage</p>
+                <p className="text-sm font-medium">Java Script</p>
                 </div>
 
             </div>
